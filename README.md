@@ -1,6 +1,6 @@
 # api-project
 
-GET, POST Request Samples for Grocery With Robot Framework
+GET, POST Request Samples With Robot Framework
 
 1. GET /allGrocery
 2. GET /allGrocery/{name}
