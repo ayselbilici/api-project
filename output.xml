@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.3 (Python 3.10.3 on darwin)" generated="20220328 22:28:14.392" rpa="false" schemaversion="2">
+<suite id="s1" name="Api" source="/Users/ayselbilici/Desktop/ApiTestWithRobotFramework/api.robot">
+<test id="s1-t1" name="Grocery All Fruit Get Request">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysesion</arg>
+<arg>${base_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220328 22:28:14.539" level="INFO">Creating Session using : alias=mysesion, url=https://apimocha.com/mygrocery, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220328 22:28:14.538" endtime="20220328 22:28:14.539"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysesion</arg>
+<arg>${endpoint1}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20220328 22:28:14.953" level="INFO">GET Request : url=https://apimocha.com/mygrocery/allGrocery 
+ path_url=/mygrocery/allGrocery 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20220328 22:28:14.953" level="INFO">GET Response : url=https://apimocha.com/mygrocery/allGrocery 
+ status=200, reason=OK 
+ headers={'content-type': 'application/json', 'accept': 'application/json', 'X-Cloud-Trace-Context': '8998c5a166c248938a340d7b655aab64;o=1', 'Date': 'Mon, 28 Mar 2022 19:28:14 GMT', 'Server': 'Google Frontend', 'Content-Length': '128'} 
+ body={
+"data": [
+{
+"id": 1,
+"name": "apple",
+"price": 3,
+"stock": 100 },
+{
+"id": 2,
+"name": "grapes", 
+"price": 5,
+"stock": 50
+} ]
+}
+ 
+ </msg>
+<msg timestamp="20220328 22:28:14.953" level="INFO">/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/urllib3/connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'apimocha.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220328 22:28:14.953" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220328 22:28:14.539" endtime="20220328 22:28:14.953"/>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20220328 22:28:14.954" level="INFO">Length is 128</msg>
+<status status="PASS" starttime="20220328 22:28:14.953" endtime="20220328 22:28:14.954"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220328 22:28:14.954" endtime="20220328 22:28:14.955"/>
+</kw>
+<status status="PASS" starttime="20220328 22:28:14.538" endtime="20220328 22:28:14.955"/>
+</test>
+<test id="s1-t2" name="Grocery Selected Name Get Request">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysesion</arg>
+<arg>${base_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220328 22:28:14.956" level="INFO">Creating Session using : alias=mysesion, url=https://apimocha.com/mygrocery, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220328 22:28:14.956" endtime="20220328 22:28:14.956"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysesion</arg>
+<arg>${endpoint2}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20220328 22:28:15.362" level="INFO">GET Request : url=https://apimocha.com/mygrocery/allGrocery/apple 
+ path_url=/mygrocery/allGrocery/apple 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20220328 22:28:15.362" level="INFO">GET Response : url=https://apimocha.com/mygrocery/allGrocery/apple 
+ status=200, reason=OK 
+ headers={'content-type': 'application/json', 'accept': 'application/json', 'X-Cloud-Trace-Context': '30754d7c6d6726b5d265d9126526d2fd', 'Date': 'Mon, 28 Mar 2022 19:28:15 GMT', 'Server': 'Google Frontend', 'Content-Length': '116'} 
+ body=      {
+            "id": 1,
+            "name": "apple",
+            "price": 3,
+            "stock": 100
+        } 
+ </msg>
+<msg timestamp="20220328 22:28:15.362" level="INFO">/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/urllib3/connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'apimocha.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220328 22:28:15.362" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220328 22:28:14.957" endtime="20220328 22:28:15.362"/>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20220328 22:28:15.364" level="INFO">Length is 116</msg>
+<status status="PASS" starttime="20220328 22:28:15.363" endtime="20220328 22:28:15.364"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220328 22:28:15.364" endtime="20220328 22:28:15.364"/>
+</kw>
+<status status="PASS" starttime="20220328 22:28:14.955" endtime="20220328 22:28:15.364"/>
+</test>
+<test id="s1-t3" name="Grocery Add Fruit Post Request">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysesion</arg>
+<arg>${base_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220328 22:28:15.365" level="INFO">Creating Session using : alias=mysesion, url=https://apimocha.com/mygrocery, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220328 22:28:15.365" endtime="20220328 22:28:15.366"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>name=banana</arg>
+<arg>price=10</arg>
+<arg>stock=50</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220328 22:28:15.366" level="INFO">${body} = {'name': 'banana', 'price': '10', 'stock': '50'}</msg>
+<status status="PASS" starttime="20220328 22:28:15.366" endtime="20220328 22:28:15.366"/>
+</kw>
+<kw name="POST" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${base_URL}/allGrocery/add</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20220328 22:28:15.752" level="INFO">POST Request : url=https://apimocha.com/mygrocery/allGrocery/add 
+ path_url=/mygrocery/allGrocery/add 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '48', 'Content-Type': 'application/json'} 
+ body=b'{"name": "banana", "price": "10", "stock": "50"}' 
+ </msg>
+<msg timestamp="20220328 22:28:15.752" level="INFO">POST Response : url=https://apimocha.com/mygrocery/allGrocery/add 
+ status=200, reason=OK 
+ headers={'content-type': 'text/html; charset=utf-8', 'X-Cloud-Trace-Context': '88bc249add2bb46cd52ba140a956a846', 'Date': 'Mon, 28 Mar 2022 19:28:15 GMT', 'Server': 'Google Frontend', 'Content-Length': '133'} 
+ body=No mock exists! Click 'Edit Response' on API Mocha to
+                            and "define the response data, status code and more 
+ </msg>
+<msg timestamp="20220328 22:28:15.752" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220328 22:28:15.367" endtime="20220328 22:28:15.752"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220328 22:28:15.752" endtime="20220328 22:28:15.753"/>
+</kw>
+<status status="PASS" starttime="20220328 22:28:15.365" endtime="20220328 22:28:15.753"/>
+</test>
+<status status="PASS" starttime="20220328 22:28:14.399" endtime="20220328 22:28:15.754"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="Api">Api</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
